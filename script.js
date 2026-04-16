@@ -778,10 +778,25 @@ function initCursorGlow() {
   const glow = document.getElementById("cursor-glow");
   if (!glow || window.matchMedia("(pointer: coarse)").matches) return;
 
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let glowX = mouseX;
+  let glowY = mouseY;
+
   document.addEventListener("mousemove", (e) => {
-    glow.style.left = `${e.clientX}px`;
-    glow.style.top = `${e.clientY}px`;
+    mouseX = e.clientX;
+    mouseY = e.clientY;
   });
+
+  function animate() {
+    glowX += (mouseX - glowX) * 0.08;
+    glowY += (mouseY - glowY) * 0.08;
+    glow.style.left = `${glowX}px`;
+    glow.style.top = `${glowY}px`;
+    requestAnimationFrame(animate);
+  }
+
+  animate();
 }
 
 function initNavScroll() {
