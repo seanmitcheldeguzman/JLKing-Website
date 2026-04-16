@@ -2229,9 +2229,18 @@ p {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .hero-section {
+    padding: 100px 0 60px;
+  }
+
   .hero-proof {
     flex-direction: column;
     gap: 24px;
+  }
+
+  .hero-proof-value {
+    white-space: normal;
+    min-height: 0;
   }
 
   .proof-divider {
