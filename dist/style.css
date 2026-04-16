@@ -2234,19 +2234,41 @@ p {
   }
 
   .hero-proof {
-    flex-direction: column;
-    gap: 24px;
+    flex-direction: row;
+    gap: 0;
+    align-items: flex-start;
+    padding-top: 32px;
+  }
+
+  .hero-proof-item {
+    flex: 1;
+    padding-right: 0;
+    padding: 0 10px;
+    text-align: center;
+    align-items: center;
   }
 
   .hero-proof-value {
+    font-size: 1.1rem;
     white-space: normal;
     min-height: 0;
+    margin-bottom: 8px;
+    letter-spacing: -0.1px;
+  }
+
+  .hero-proof-label {
+    max-width: 100%;
+    font-size: 0.68rem;
+    text-align: center;
+    line-height: 1.5;
   }
 
   .proof-divider {
-    width: 40px;
-    height: 1px;
+    width: 1px;
+    height: auto;
+    align-self: stretch;
     margin: 0;
+    flex-shrink: 0;
   }
 
   .proof-item + .proof-item {
@@ -2312,20 +2334,22 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 14px;
-    padding: 56px 14px 20px;
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 52px 16px 20px;
   }
 
   .project-main-stage {
     min-height: 0;
+    flex: 1;
+    width: 100%;
   }
 
   .project-main-stage,
   .project-main-stage.is-landscape,
   .project-main-stage.is-portrait,
   .project-main-stage.is-square {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: unset;
     width: 100%;
     max-width: 100%;
   }
