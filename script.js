@@ -1622,6 +1622,8 @@ function initFormSubmit() {
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    if (form._submitting) return;
+    form._submitting = true;
 
     if (!validateForm()) return;
 
@@ -1631,9 +1633,10 @@ function initFormSubmit() {
     const captchaResponse = form.querySelector("textarea[name=h-captcha-response]")?.value;
     if (!captchaResponse) {
       const captchaEl = form.querySelector(".h-captcha");
-      if (captchaEl) captchaEl.style.outline = "1px solid #b05a2c";
+      if (captchaEl) captchaEl.classList.add("captcha-error");
       return;
     }
+    form.querySelector(".h-captcha")?.classList.remove("captcha-error");
 
     const btn = form.querySelector(".btn-submit");
     const btnText = btn?.querySelector(".btn-text");
@@ -1668,6 +1671,7 @@ function initFormSubmit() {
 
       showFormSuccess();
     } catch (error) {
+      form._submitting = false;
       if (btn) { btn.disabled = false; btn.classList.remove("is-loading"); }
 
       const footer = form.querySelector(".form-footer");

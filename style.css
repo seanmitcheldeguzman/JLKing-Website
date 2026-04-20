@@ -1460,6 +1460,13 @@ p {
   pointer-events: none;
   transition: all 0.25s ease;
   line-height: 1;
+  background: transparent;
+  z-index: 1;
+}
+
+.form-group-textarea label {
+  background: #0e0e0e;
+  padding: 0 4px 0 0;
 }
 
 .form-group input:focus ~ label,
@@ -2663,4 +2670,12 @@ p {
   margin-bottom: 8px;
   background: transparent;
   min-height: 78px;
+  display: inline-block;
+  width: 100%;
+}
+
+.h-captcha.captcha-error > iframe,
+.h-captcha.captcha-error > div {
+  outline: 1px solid var(--rust, #b05a2c);
+  border-radius: 4px;
 }
