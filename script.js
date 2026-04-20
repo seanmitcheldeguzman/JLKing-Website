@@ -1639,9 +1639,7 @@ function initFormSubmit() {
     const btnText = btn?.querySelector(".btn-text");
     const btnLoading = btn?.querySelector(".btn-loading");
 
-    if (btn) btn.disabled = true;
-    if (btnText) btnText.style.display = "none";
-    if (btnLoading) btnLoading.style.display = "inline";
+    if (btn) { btn.disabled = true; btn.classList.add("is-loading"); }
 
     const formData = {
       access_key: "ff5e02fd-9b40-4e48-82d9-5e0c73e695d4",
@@ -1670,9 +1668,7 @@ function initFormSubmit() {
 
       showFormSuccess();
     } catch (error) {
-      if (btn) btn.disabled = false;
-      if (btnText) btnText.style.display = "inline";
-      if (btnLoading) btnLoading.style.display = "none";
+      if (btn) { btn.disabled = false; btn.classList.remove("is-loading"); }
 
       const footer = form.querySelector(".form-footer");
       let errMsg = form.querySelector(".form-submit-error");

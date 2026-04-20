@@ -2653,5 +2653,14 @@ p {
 }
 
 .btn-loading {
-  display: none;
+  display: none !important;
+}
+
+.btn-submit.is-loading .btn-text    { display: none !important; }
+.btn-submit.is-loading .btn-loading { display: inline !important; }
+
+.h-captcha {
+  margin-bottom: 8px;
+  background: transparent;
+  min-height: 78px;
 }
