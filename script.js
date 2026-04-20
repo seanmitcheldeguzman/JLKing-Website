@@ -2,6 +2,15 @@
 // JLKING CONSULTING — SCRIPT
 // =====================================================
 
+function sanitize(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 function buildProjectImages(images) {
   return images.map((image, index) => {
     if (typeof image === "string") {
@@ -960,10 +969,10 @@ function renderServices() {
 
     el.innerHTML = `
       <div class="service-card-inner">
-        <span class="service-index">${service.index}</span>
+        <span class="service-index">${sanitize(service.index)}</span>
         <div class="service-card-body">
-          <h3>${service.title}</h3>
-          <p>${service.short}</p>
+          <h3>${sanitize(service.title)}</h3>
+          <p>${sanitize(service.short)}</p>
           <span class="service-card-hint">View Full Scope</span>
         </div>
         <div class="service-card-arrow">
@@ -1001,10 +1010,10 @@ function renderPortfolio() {
     el.setAttribute("aria-label", `${project.title} — view case study`);
 
     el.innerHTML = `
-      <div class="project-image" style="background-image:url('${project.img}')"></div>
+      <div class="project-image" style="background-image:url('${sanitize(project.img)}')"></div>
       <div class="project-overlay">
-        <span class="project-category">${project.category || "Project"}</span>
-        <h3>${project.title}</h3>
+        <span class="project-category">${sanitize(project.category || "Project")}</span>
+        <h3>${sanitize(project.title)}</h3>
         <span class="project-cta-hint">View Case Study →</span>
       </div>
     `;
@@ -1129,9 +1138,9 @@ function openService(service) {
     .map(
       (section) => `
       <div class="modal-section">
-        <h4>${section.heading}</h4>
+        <h4>${sanitize(section.heading)}</h4>
         <ul class="modal-list">
-          ${section.bullets.map((item) => `<li>${item}</li>`).join("")}
+          ${section.bullets.map((item) => `<li>${sanitize(item)}</li>`).join("")}
         </ul>
       </div>
     `
@@ -1141,15 +1150,15 @@ function openService(service) {
   body.innerHTML = `
     <div class="modal-text">
       <div class="modal-scroll service-modal-scroll">
-        <span class="modal-eyebrow">${service.category}</span>
-        <h2 id="modal-title">${service.title}</h2>
-        <div class="modal-sub">${service.scale}</div>
+        <span class="modal-eyebrow">${sanitize(service.category)}</span>
+        <h2 id="modal-title">${sanitize(service.title)}</h2>
+        <div class="modal-sub">${sanitize(service.scale)}</div>
 
         <div class="modal-divider"></div>
 
         <div class="modal-section">
           <h4>Overview</h4>
-          <p>${service.intro}</p>
+          <p>${sanitize(service.intro)}</p>
         </div>
 
         ${sectionsMarkup}
@@ -1199,7 +1208,7 @@ function buildProjectDetailSections(project) {
     sections.push(`
       <div class="modal-section">
         <h4>Scope</h4>
-        <p>${project.description}</p>
+        <p>${sanitize(project.description)}</p>
       </div>
     `);
   }
@@ -1208,7 +1217,7 @@ function buildProjectDetailSections(project) {
     sections.push(`
       <div class="modal-section">
         <h4>Challenge</h4>
-        <p>${project.problem}</p>
+        <p>${sanitize(project.problem)}</p>
       </div>
     `);
   }
@@ -1217,7 +1226,7 @@ function buildProjectDetailSections(project) {
     sections.push(`
       <div class="modal-section">
         <h4>Approach</h4>
-        <p>${project.solution}</p>
+        <p>${sanitize(project.solution)}</p>
       </div>
     `);
   }
@@ -1226,7 +1235,7 @@ function buildProjectDetailSections(project) {
     sections.push(`
       <div class="modal-section">
         <h4>Outcome</h4>
-        <p>${project.result}</p>
+        <p>${sanitize(project.result)}</p>
       </div>
     `);
   }
@@ -1271,9 +1280,9 @@ function openProject(project, startIndex = 0) {
   body.innerHTML = `
     <div class="project-modal-copy">
       <div class="modal-scroll project-modal-scroll">
-        <span class="modal-eyebrow">${project.category || "Project"}</span>
-        <h2 id="modal-title">${project.title}</h2>
-        <div class="modal-sub">${project.scale || ""}</div>
+        <span class="modal-eyebrow">${sanitize(project.category || "Project")}</span>
+        <h2 id="modal-title">${sanitize(project.title)}</h2>
+        <div class="modal-sub">${sanitize(project.scale || "")}</div>
         ${detailSections ? `<div class="modal-divider"></div>${detailSections}` : ""}
       </div>
     </div>
@@ -1290,8 +1299,8 @@ function openProject(project, startIndex = 0) {
           <img
             id="project-main-image"
             class="project-main-image"
-            src="${currentImage.full}"
-            alt="${currentImage.alt} — ${project.title}"
+            src="${sanitize(currentImage.full)}"
+            alt="${sanitize(currentImage.alt)} — ${sanitize(project.title)}"
           />
         </div>
 
@@ -1306,7 +1315,7 @@ function openProject(project, startIndex = 0) {
         </div>
       </div>
 
-      <div class="project-gallery-title reveal-title">${project.title.toUpperCase()}</div>
+      <div class="project-gallery-title reveal-title">${sanitize(project.title.toUpperCase())}</div>
 
       <div class="project-thumb-rail" id="project-thumb-rail" aria-label="Project image gallery">
         ${images
@@ -1319,7 +1328,7 @@ function openProject(project, startIndex = 0) {
               aria-label="View image ${index + 1}"
               aria-pressed="${index === activeProjectImageIndex ? "true" : "false"}"
             >
-              <img src="${image.thumb}" alt="${image.alt} thumbnail" loading="lazy" />
+              <img src="${sanitize(image.thumb)}" alt="${sanitize(image.alt)} thumbnail" loading="lazy" />
             </button>
           `
           )
@@ -1582,7 +1591,7 @@ function validateForm() {
   const email = document.getElementById("f-email");
   const emailErr = document.getElementById("err-email");
   const emailGroup = email?.closest(".form-group");
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailPattern = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
 
   if (!email?.value.trim()) {
     if (emailErr) emailErr.textContent = "Email is required";
@@ -1615,6 +1624,9 @@ function initFormSubmit() {
     e.preventDefault();
 
     if (!validateForm()) return;
+
+    const honeypot = document.getElementById("f-honeypot");
+    if (honeypot && honeypot.value) return;
 
     const btn = form.querySelector(".btn-submit");
     const btnText = btn?.querySelector(".btn-text");

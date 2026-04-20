@@ -4,7 +4,8 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://i.imgur.com data:; connect-src https://api.web3forms.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://i.imgur.com https://images.unsplash.com; connect-src https://api.web3forms.com; frame-ancestors 'none';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>JLKing Consulting</title>
     <link rel="stylesheet" href="./style.css">
 
@@ -404,7 +405,7 @@
             <div class="contact-card">
               <div class="contact-detail">
                 <span class="contact-label">Email</span>
-                <a href="mailto:Admin@jlkingconsulting.com" class="contact-value">Admin@jlkingconsulting.com</a>
+                <a href="mailto:&#65;&#100;&#109;&#105;&#110;&#64;&#106;&#108;&#107;&#105;&#110;&#103;&#99;&#111;&#110;&#115;&#117;&#108;&#116;&#105;&#110;&#103;&#46;&#99;&#111;&#109;" class="contact-value">&#65;&#100;&#109;&#105;&#110;&#64;&#106;&#108;&#107;&#105;&#110;&#103;&#99;&#111;&#110;&#115;&#117;&#108;&#116;&#105;&#110;&#103;&#46;&#99;&#111;&#109;</a>
               </div>
 
               <div class="contact-divider"></div>
@@ -458,6 +459,9 @@
                 <span class="field-error" id="err-message" role="alert"></span>
               </div>
 
+              <!-- honeypot: bots fill this, humans don't see it -->
+              <input type="text" name="website" id="f-honeypot" tabindex="-1" autocomplete="off" style="display:none!important;position:absolute;left:-9999px;" aria-hidden="true">
+
               <div class="form-footer">
                 <button class="btn btn-primary btn-submit" type="submit">
                   <span class="btn-text">Submit Inquiry</span>
@@ -488,7 +492,7 @@
       <div class="footer-legal">
         <span class="footer-location">New York, NY</span>
         <span class="footer-sep">·</span>
-        <a href="mailto:Admin@jlkingconsulting.com" class="footer-email">Admin@jlkingconsulting.com</a>
+        <a href="mailto:&#65;&#100;&#109;&#105;&#110;&#64;&#106;&#108;&#107;&#105;&#110;&#103;&#99;&#111;&#110;&#115;&#117;&#108;&#116;&#105;&#110;&#103;&#46;&#99;&#111;&#109;" class="footer-email">&#65;&#100;&#109;&#105;&#110;&#64;&#106;&#108;&#107;&#105;&#110;&#103;&#99;&#111;&#110;&#115;&#117;&#108;&#116;&#105;&#110;&#103;&#46;&#99;&#111;&#109;</a>
         <span class="footer-sep">·</span>
         <span class="footer-copyright">&copy; JLKing Consulting PLLC. All rights reserved.</span>
       </div>
