@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://i.imgur.com https://images.unsplash.com; connect-src https://api.web3forms.com; frame-ancestors 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://web3forms.com https://js.hcaptcha.com https://newassets.hcaptcha.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://newassets.hcaptcha.com; font-src https://fonts.gstatic.com; img-src 'self' https://i.imgur.com https://images.unsplash.com https://newassets.hcaptcha.com; connect-src https://api.web3forms.com https://hcaptcha.com https://newassets.hcaptcha.com; frame-src https://newassets.hcaptcha.com; frame-ancestors 'none';">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>JLKing Consulting</title>
     <link rel="stylesheet" href="./style.css">
@@ -462,6 +462,8 @@
               <!-- honeypot: bots fill this, humans don't see it -->
               <input type="text" name="website" id="f-honeypot" tabindex="-1" autocomplete="off" class="honeypot-field" aria-hidden="true">
 
+              <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
+
               <div class="form-footer">
                 <button class="btn btn-primary btn-submit" type="submit">
                   <span class="btn-text">Submit Inquiry</span>
@@ -519,7 +521,8 @@
     </div>
   </div>
 </div>
-    <script  src="./script.js"></script>
+    <script src="https://web3forms.com/client/script.js" async defer></script>
+    <script src="./script.js"></script>
 
   </body>
   

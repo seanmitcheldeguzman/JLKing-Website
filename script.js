@@ -1628,6 +1628,13 @@ function initFormSubmit() {
     const honeypot = document.getElementById("f-honeypot");
     if (honeypot && honeypot.value) return;
 
+    const captchaResponse = form.querySelector("textarea[name=h-captcha-response]")?.value;
+    if (!captchaResponse) {
+      const captchaEl = form.querySelector(".h-captcha");
+      if (captchaEl) captchaEl.style.outline = "1px solid #b05a2c";
+      return;
+    }
+
     const btn = form.querySelector(".btn-submit");
     const btnText = btn?.querySelector(".btn-text");
     const btnLoading = btn?.querySelector(".btn-loading");
@@ -1642,7 +1649,8 @@ function initFormSubmit() {
       company: document.getElementById("f-company")?.value.trim() || "",
       email: document.getElementById("f-email")?.value.trim() || "",
       location: document.getElementById("f-location")?.value.trim() || "",
-      message: document.getElementById("f-message")?.value.trim() || ""
+      message: document.getElementById("f-message")?.value.trim() || "",
+      "h-captcha-response": captchaResponse
     };
 
     try {
