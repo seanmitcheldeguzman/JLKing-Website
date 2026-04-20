@@ -2646,3 +2646,12 @@ p {
     justify-content: center;
   }
 }
+.honeypot-field {
+  display: none !important;
+  position: absolute;
+  left: -9999px;
+}
+
+.btn-loading {
+  display: none;
+}

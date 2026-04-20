@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://i.imgur.com https://images.unsplash.com; connect-src https://api.web3forms.com; frame-ancestors 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://i.imgur.com https://images.unsplash.com; connect-src https://api.web3forms.com; frame-ancestors 'none';">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>JLKing Consulting</title>
     <link rel="stylesheet" href="./style.css">
@@ -460,12 +460,12 @@
               </div>
 
               <!-- honeypot: bots fill this, humans don't see it -->
-              <input type="text" name="website" id="f-honeypot" tabindex="-1" autocomplete="off" style="display:none!important;position:absolute;left:-9999px;" aria-hidden="true">
+              <input type="text" name="website" id="f-honeypot" tabindex="-1" autocomplete="off" class="honeypot-field" aria-hidden="true">
 
               <div class="form-footer">
                 <button class="btn btn-primary btn-submit" type="submit">
                   <span class="btn-text">Submit Inquiry</span>
-                  <span class="btn-loading" style="display:none;">Sending…</span>
+                  <span class="btn-loading">Sending…</span>
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                     <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
