@@ -2667,11 +2667,20 @@ p {
 .btn-submit.is-loading .btn-loading { display: inline !important; }
 
 .h-captcha {
-  margin-bottom: 8px;
   background: transparent;
-  min-height: 78px;
   display: inline-block;
   width: 100%;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  margin-bottom: 0;
+  transition: max-height 0.35s ease, opacity 0.3s ease, margin-bottom 0.35s ease;
+}
+
+.h-captcha.captcha-visible {
+  max-height: 100px;
+  opacity: 1;
+  margin-bottom: 8px;
 }
 
 .h-captcha.captcha-error > iframe,

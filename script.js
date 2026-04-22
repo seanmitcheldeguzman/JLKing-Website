@@ -1609,6 +1609,11 @@ function validateForm() {
   return valid;
 }
 
+window.onHCaptchaComplete = function () {
+  const form = document.getElementById("inquiry-form");
+  if (form) form.dispatchEvent(new Event("submit", { cancelable: true, bubbles: true }));
+};
+
 function initFormSubmit() {
   const form = document.getElementById("inquiry-form");
   if (!form) return;
@@ -1633,10 +1638,11 @@ function initFormSubmit() {
     const captchaResponse = form.querySelector("textarea[name=h-captcha-response]")?.value;
     if (!captchaResponse) {
       const captchaEl = form.querySelector(".h-captcha");
-      if (captchaEl) captchaEl.classList.add("captcha-error");
+      if (captchaEl) captchaEl.classList.add("captcha-visible");
+      form._submitting = false;
       return;
     }
-    form.querySelector(".h-captcha")?.classList.remove("captcha-error");
+    form.querySelector(".h-captcha")?.classList.remove("captcha-visible");
 
     const btn = form.querySelector(".btn-submit");
     const btnText = btn?.querySelector(".btn-text");
